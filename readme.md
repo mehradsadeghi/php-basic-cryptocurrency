@@ -1,21 +1,35 @@
-# Lumen PHP Framework
+# PHP Basic Blockchain
+A basic blockchain app based on PHP Laravel - Lumen
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+# Functionalities :
+  - Mine new block based on given target for POW
+  - Checks the validity of the chain
+  - Fetch all blocks of the chain
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Usage  
 
-## Official Documentation
+#### Run the server : 
+```sh
+$ php -S localhost:8000 -t public
+```
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+###### Then you my run your http client and make requests based on the following routes :
 
-## Security Vulnerabilities
+```sh
+$router->get('/chain', ... );
+$router->get('/validation', ... );
+$router->post('/store', ... );
+```
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+### Note
 
-## License
+You can change the difficulty of POW by adding more zores to **$target** variable in **App\Facades\Blockchain.php**
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+```
+class Blockchain {
+    private $hashAlgorithm = 'sha256';
+    private $target = '0';	// here you go
+    private $genesisProof = 1;
+    private $genesisPrevHash = '0';
+	. . .
+```

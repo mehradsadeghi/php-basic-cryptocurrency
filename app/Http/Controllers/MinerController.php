@@ -6,27 +6,30 @@ use App\Facades\Blockchain;
 
 class MinerController extends Controller {
 
+    private $blockchain;
+
+    public function __construct() {
+        $this->blockchain = new Blockchain();
+    }
+
     public function chain() {
-        $blockchain = new Blockchain();
-        $chain = $blockchain->getChain();
+        $chain = $this->blockchain->getChain();
         return response()->json($chain);
     }
 
     public function store() {
 
-        $blockchain = new Blockchain();
+        $proof = $this->blockchain->proofOfWork();
+        $lastBlock = $this->blockchain->getLastBlock();
+        $hashedPrevBlock = $this->blockchain->hashTheBlock($lastBlock);
 
-        $proof = $blockchain->proofOfWork();
-        $lastBlock = $blockchain->getLastBlock();
-        $hashedPrevBlock = $blockchain->hashTheBlock($lastBlock);
-
-        $block = $blockchain->createBlock($proof, $hashedPrevBlock);
+        $block = $this->blockchain->createBlock($proof, $hashedPrevBlock);
 
         return response()->json($block);
     }
 
     public function chainValidation() {
-        $data = (new Blockchain())->chainValidation();
+        $data = $this->blockchain->chainValidation();
         return response()->json($data);
     }
 }
