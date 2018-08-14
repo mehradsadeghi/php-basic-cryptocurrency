@@ -94,7 +94,7 @@ class MinerController extends Controller {
         } else {
 
             $response = [
-                'message' => 'The chian was the longest chain',
+                'message' => 'The chain was the longest chain',
                 'current_chain' => $this->blockchain->getChain()
             ];
 
