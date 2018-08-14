@@ -18,8 +18,8 @@ validating the blockchain stored in your database is possible through a GET requ
 
 `http://your-domain/blockchain/validation`
 
-#### Update/Replace The Longest Chain
-Updating (replacing) the longest chain in the network is possible through a GET request to the following url :
+#### Replace The Longest Chain
+Replacing (updating) the longest chain in the network is possible through a GET request to the following url :
 
 `http://your-domain/blockchain/replace-chain`
 
@@ -82,9 +82,9 @@ In order to have a decentralized cryptocurrency, you may have multiple clones of
 ------------
 
 #### Step #1
-[Connect](#Connect To Network Nodes) all the nodes.
+[Connect](#connect-to-network-nodes) all the nodes.
 #### Step #2
-[Mine a new block](#Mining New Block ) on server 8001 and then [get its chain](#Get My Chain).
+[Mine a new block](#mining-new-block ) on server 8001 and then [get its chain](#get-my-chain).
 You should see something like this :
 ```
 	{
@@ -114,7 +114,7 @@ You should see something like this :
 	}
 ```
 #### Step #3
-[Update](#Update/Replace The Longest Chain) the server 8001 chain. You should see the **The chain was the longest chain** message.
+[Update](#replace-the-longest-chain) the server 8001 chain. You should see the **The chain was the longest chain** message.
 ```
 {
 	"message": "The chain was the longest chain",
@@ -145,7 +145,7 @@ You should see something like this :
 As you probably guessed this chain was the longest chain in network.
 
 #### Step #4
-[Get](#Get My Chain) the server 8002 chain. It should look like this :
+[Get](#get-my-chain) the server 8002 chain. It should look like this :
 ```
 {
 	"chain": [
@@ -162,7 +162,7 @@ As you probably guessed this chain was the longest chain in network.
 ```
 
 #### Step #5
-[Update](#Update/Replace The Longest Chain) the server 8002 chain. You should see the **Chain replaced by the longest chain** message. So now server 8002 chain is synced to 8001 server.
+[Update](#replace-the-longest-chain) the server 8002 chain. You should see the **Chain replaced by the longest chain** message. So now server 8002 chain is synced to 8001 server.
 ```
 {
 	"message": "The chain was the longest chain",
@@ -193,7 +193,7 @@ As you probably guessed this chain was the longest chain in network.
 You can to the same as server 8002 for server 8003 to sync up the chains.
 
 #### Step #6
-[Add new transaction](#Add Transaction) to server 8001 and [mine a new block](#Mining New Block) in order to confirm the transaction. 
+[Add new transaction](#add-transaction) to server 8001 and [mine a new block](#mining-new-block) in order to confirm the transaction. 
 
 ##### Note 
-To sync the nodes you may do the [Step #5](#Step #5) again.
+To sync the nodes you may do the [Step #5](#step-5) again.
