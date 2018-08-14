@@ -14,5 +14,15 @@
 $router->group(['prefix' => 'blockchain'], function() use ($router) {
     $router->get('/chain', 'MinerController@chain');
     $router->get('/validation', 'MinerController@chainValidation');
-    $router->post('/store', 'MinerController@store');
+    $router->get('/store', 'MinerController@store');
+    $router->get('replace-chain', 'MinerController@replaceChain');
 });
+
+$router->group(['prefix' => 'transactions'], function() use ($router) {
+    $router->post('add', 'MinerController@addTransaction');
+});
+
+$router->group(['prefix' => 'nodes'], function() use ($router) {
+    $router->post('connect', 'MinerController@connectNodes');
+});
+
